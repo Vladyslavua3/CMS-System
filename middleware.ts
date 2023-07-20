@@ -1,9 +1,11 @@
 import { authMiddleware } from "@clerk/nextjs";
 
-export default authMiddleware({
-    publicRoutes: ["/api/:path*"],
-});
+
+
+export default authMiddleware({});
 
 export const config = {
-    matcher: ["/protected-path-1", "/protected-path-2"],
+
+    matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+
 };
