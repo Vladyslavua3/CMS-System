@@ -22,8 +22,6 @@ import {
     FormMessage
 } from "@/components/ui/form";
 import {AlertModal} from "@/components/modals/alert-modal";
-import {ApiAlert} from "@/components/ui/api-alert";
-import {useOrigin} from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
 
@@ -75,6 +73,7 @@ export const BillboardForm:React.FC<BillboardFormProps> = ({
                 await axios.post(`/api/${params.storeId}/billboards`,data)
             }
             router.refresh()
+            router.push(`/${params.storeId}/billboards`)
             toast.success(toastMessage)
         }catch (e) {
             toast.error('Something went wrong')
