@@ -8,7 +8,7 @@ import {useParams, useRouter} from "next/navigation";
 import {columns} from "@/app/(dashboard)/[storeId]/(routes)/categories/components/columns";
 import {DataTable} from "@/components/ui/data-table";
 import {ApiList} from "@/components/ui/api-list";
-import {CategoryColumn} from "@/app/(dashboard)/[storeId]/(routes)/categories/components/columns";
+import {CategoryColumn} from "./columns";
 
 interface CategoryClientProps {
     data:CategoryColumn[]
@@ -22,7 +22,7 @@ const CategoryClient:React.FC<CategoryClientProps> = ({data}) => {
 
 
     const handlerForButton = () => {
-        router.push(`/${params.storeId}/billboards/new`)
+        router.push(`/${params.storeId}/categories/new`)
     }
 
     return (
@@ -37,10 +37,10 @@ const CategoryClient:React.FC<CategoryClientProps> = ({data}) => {
                 </Button>
             </div>
             <Separator/>
-            <DataTable searchKey={'label'} columns={columns} data={data}/>
-            <Heading title={'API'} description={'API calls for Billboards'}/>
+            <DataTable searchKey={'name'} columns={columns} data={data}/>
+            <Heading title={'API'} description={'API calls for Categories'}/>
             <Separator/>
-            <ApiList entityName={'categories'} entityIdName={'categoriesId'}/>
+            <ApiList entityName={'categories'} entityIdName={'categoryId'}/>
         </>
     );
 };
