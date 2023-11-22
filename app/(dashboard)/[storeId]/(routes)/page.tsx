@@ -8,16 +8,10 @@ interface DashboardPropsType {
 
 const DashBoardPage:React.FC<DashboardPropsType> = async ({params}) =>{
 
-    const store = await prismadb.store.findFirst({
-        where:{
-            id:params.storeId
-        }
-    })
-
 
     return(
         <div>
-            Active Store : {store?.name}
+            Active Store
         </div>
     )
 }
