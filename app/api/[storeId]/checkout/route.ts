@@ -17,7 +17,7 @@ export async function POST(
     req: Request,
     { params }: { params: { storeId: string } }
 ) {
-    const { productIds } = await req.json();
+    const { productIds,phone,address } = await req.json();
 
     if (!productIds || productIds.length === 0) {
         return new NextResponse("Product ids are required", { status: 400 });
@@ -50,6 +50,8 @@ export async function POST(
         data: {
             storeId: params.storeId,
             isPaid: false,
+            phone:phone,
+            address:address,
             orderItems: {
                 create: productIds.map((productId: string) => ({
                     product: {
@@ -66,4 +68,4 @@ export async function POST(
     return NextResponse.json({message:'We will contact with you'}, {
         headers: corsHeaders
     });
-};
+}
